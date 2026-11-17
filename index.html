@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Eduardo de Almeida | Especialista em Dados, BI & IA</title>
+    <!-- Fontes Modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #070b14;
+            --bg-surface: rgba(15, 23, 42, 0.65);
+            --bg-surface-hover: rgba(30, 41, 59, 0.8);
+            --border-glass: rgba(148, 163, 184, 0.14);
+            --border-glow: rgba(56, 189, 248, 0.35);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-blue: #3b82f6;
+            --accent-indigo: #818cf8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo Tech Grid */
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+            z-index: -2;
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, #000 40%, transparent 100%);
+        }
+
+        .glow-orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(130px);
+            z-index: -1;
+            opacity: 0.22;
+            pointer-events: none;
+        }
+
+        .orb-1 { top: -150px; left: -100px; background: var(--accent-blue); }
+        .orb-2 { bottom: 10%; right: -150px; background: var(--accent-indigo); }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(7, 11, 20, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .nav-logo span.dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent-cyan); }
+
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 5rem;
+        }
+
+        /* Hero */
+        .hero-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+            z-index: 0;
+            opacity: 0.85;
+        }
+
+        .hero-img {
+            position: relative;
+            z-index: 1;
+            width: 156px;
+            height: 156px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-dark);
+            display: block;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+
+        .status-pulse {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-cyan);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7); }
+            70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+        }
+
+        .hero-content h1 {
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .hero-bio {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin-bottom: 1.75rem;
+            max-width: 620px;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 1.35rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .btn-linkedin {
+            background: linear-gradient(135deg, #0a66c2, #2563eb);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-whatsapp {
+            background: rgba(37, 211, 102, 0.12);
+            border: 1px solid rgba(37, 211, 102, 0.35);
+            color: #4ade80;
+        }
+
+        .btn-whatsapp:hover {
+            background: rgba(37, 211, 102, 0.22);
+            transform: translateY(-2px);
+        }
+
+        /* Métricas */
+        .bento-metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .metric-box {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 1.5rem 1.25rem;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .metric-box:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+        }
+
+        .metric-value {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-value span { color: var(--accent-cyan); }
+        .metric-title { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Sessões */
+        .section-header { margin-bottom: 2rem; }
+        .section-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-cyan);
+            display: block;
+            margin-bottom: 0.35rem;
+        }
+        .section-title { font-size: 1.65rem; font-weight: 700; }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-indigo), rgba(148, 163, 184, 0.1));
+        }
+
+        .timeline-card {
+            position: relative;
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            transition: border-color 0.3s;
+        }
+
+        .timeline-card:hover { border-color: var(--border-glow); }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -2.02rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2.5px solid var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .timeline-company { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
+        .timeline-role { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.65rem; }
+        .timeline-desc { font-size: 0.94rem; color: var(--text-secondary); }
+
+        /* Posts */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .post-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+        }
+
+        .post-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent-indigo);
+            background: rgba(129, 140, 248, 0.12);
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .post-card h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 0.65rem; }
+        .post-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .post-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        /* Stack & Educação */
+        .bottom-bento {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 1.5rem;
+        }
+
+        .bento-panel {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+        .tech-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            padding: 0.45rem 0.9rem;
+            border-radius: 10px;
+        }
+
+        .edu-list { display: flex; flex-direction: column; gap: 1rem; }
+        .edu-item { padding-bottom: 0.9rem; border-bottom: 1px solid var(--border-glass); }
+        .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .edu-degree { font-weight: 600; font-size: 0.95rem; }
+        .edu-inst { font-size: 0.82rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; }
+
+        /* WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25d366;
+            color: #052e16;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.65rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 99;
+            transition: transform 0.25s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.08); }
+
+        footer {
+            border-top: 1px solid var(--border-glass);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .footer-contact {
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 900px) {
+            .bento-metrics { grid-template-columns: repeat(2, 1fr); }
+            .posts-grid, .bottom-bento { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 720px) {
+            .hero-card { flex-direction: column; text-align: center; padding: 2.25rem 1.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <nav>
+        <a href="#" class="nav-logo">
+            <span class="dot"></span>
+            luis.almeida<span style="color: var(--accent-cyan);">.data</span>
+        </a>
+        <div class="nav-links">
+            <a href="#trajetoria">Trajetória</a>
+            <a href="#publicacoes">Publicações</a>
+            <a href="#stack">Stack & Formação</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero-card">
+            <div class="avatar-wrapper">
+                <div class="avatar-ring"></div>
+                <img src="perfil.jpg" alt="Luis Eduardo de Almeida" class="hero-img" onerror="this.src='https://ui-avatars.com/api/?name=Luis+Almeida&background=0f172a&color=38bdf8&size=240&bold=true'">
+            </div>
+            <div class="hero-content">
+                <div class="status-badge">
+                    <span class="status-pulse"></span>
+                    Data Analytics • Power Platform • AI Solutions
+                </div>
+                <h1>Luis Eduardo de Almeida</h1>
+                <div class="hero-subtitle">Especialista em Dados, Business Intelligence & Transformação Digital</div>
+                <p class="hero-bio">
+                    Mais de uma década conectando estratégia de negócios à engenharia e visualização de dados. Foco em mapear gargalos operacionais, padronizar fluxos e escalar soluções com Power Platform, Oracle FDI e Inteligência Artificial.
+                </p>
+                <div class="hero-actions">
+                    <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20no%20LinkedIn%20e%20gostaria%20de%20conversar!" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> +55 12 99756-5773
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bento-metrics">
+            <div class="metric-box">
+                <span class="metric-value"><span>+</span>10 anos</span>
+                <span class="metric-title">Trajetória em Dados & Negócios</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value"><span>+</span>2.000h</span>
+                <span class="metric-title">Economia operacional/ano</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value"><span>+</span>60</span>
+                <span class="metric-title">Profissionais capacitados</span>
+            </div>
+            <div class="metric-box">
+                <span class="metric-value"><span>+</span>40</span>
+                <span class="metric-title">Soluções & Agentes de IA</span>
+            </div>
+        </section>
+
+        <div class="section-header" id="trajetoria">
+            <span class="section-eyebrow">// Evolução Profissional</span>
+            <h2 class="section-title">Crescimento & Experiência</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">DEZ 2023 – NOV 2026</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Especialista em Dados</h3>
+                <p class="timeline-desc">Modelagem analítica em Oracle Fusion Data Intelligence (FDI), incluindo projeto internacional de Hypercare na Espanha. Idealizador e instrutor de Bootcamps internos de Finanças & DNA, capacitando times em Power BI, Power Automate e Copilot Studio.</p>
+            </div>
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">JAN 2023 – DEZ 2023</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Analista de Dados Sênior</h3>
+                <p class="timeline-desc">Arquitetura de soluções de Business Intelligence, estruturação de pipelines de ETL e desenvolvimento de aplicativos corporativos com Power Apps e Dataverse para automação financeira e operacional.</p>
+            </div>
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">DEZ 2014 – DEZ 2022</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Evolução em Dados, Sistemas & Processos</h3>
+                <p class="timeline-desc">Crescimento progressivo desde áreas administrativas e operacionais até a consolidação em Data Analytics, conduzindo a digitalização de fluxos e substituição de controles manuais por plataformas integradas.</p>
+            </div>
+        </div>
+
+        <div class="section-header" id="publicacoes">
+            <span class="section-eyebrow">// Featured Content</span>
+            <h2 class="section-title">Publicações em Destaque no LinkedIn</h2>
+        </div>
+
+        <div class="posts-grid">
+            <article class="post-card">
+                <div>
+                    <span class="post-tag">Oracle FDI • Global</span>
+                    <h3>Transformação e Oracle FDI na Bimbo</h3>
+                    <p>Bastidores e aprendizados das entregas e implantações de arquitetura de dados envolvendo expansão internacional e integração corporativa.</p>
+                </div>
+                <a href="https://www.linkedin.com/posts/lalmeidadeveloper_bimbobrasil-bimboiberia-oraclefdi-activity-7424055378583199744-HxLP" target="_blank" class="post-cta">
+                    Ler no LinkedIn <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="post-card">
+                <div>
+                    <span class="post-tag">Liderança • Finanças</span>
+                    <h3>Liderando o Time de Finanças nesta Jornada</h3>
+                    <p>Reflexões sobre capacitação técnica, cultura data-driven e a evolução da eficiência financeira por meio de automação e inteligência de dados.</p>
+                </div>
+                <a href="https://www.linkedin.com/posts/lalmeidadeveloper_liderar-o-time-de-finan%C3%A7as-nesta-jornada-activity-7354310362374057984-rssV" target="_blank" class="post-cta">
+                    Ler no LinkedIn <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <article class="post-card">
+                <div>
+                    <span class="post-tag">Cultura • Colaboração</span>
+                    <h3>Gratidão e Reconhecimento à Equipe</h3>
+                    <p>Celebrando conquistas coletivas, o protagonismo das pessoas e o impacto de equipes engajadas em projetos de inovação e BI.</p>
+                </div>
+                <a href="https://www.linkedin.com/posts/lalmeidadeveloper_gratidaeto-reconhecimento-equipe-activity-7256689383595003904-IGdH" target="_blank" class="post-cta">
+                    Ler no LinkedIn <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+        </div>
+
+        <div class="bottom-bento" id="stack">
+            <div class="bento-panel">
+                <div class="section-header" style="margin-bottom: 1.25rem;">
+                    <span class="section-eyebrow">// Tech Stack</span>
+                    <h2 class="section-title" style="font-size: 1.35rem;">Competências & Ferramentas</h2>
+                </div>
+                <div class="skills-wrap">
+                    <span class="tech-pill">Power BI</span>
+                    <span class="tech-pill">Power Apps</span>
+                    <span class="tech-pill">Power Automate</span>
+                    <span class="tech-pill">Copilot Studio</span>
+                    <span class="tech-pill">Dataverse</span>
+                    <span class="tech-pill">Oracle FDI</span>
+                    <span class="tech-pill">SQL</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">ETL & Data Modeling</span>
+                    <span class="tech-pill">AI Agents</span>
+                    <span class="tech-pill">Gestão de Projetos</span>
+                </div>
+            </div>
+
+            <div class="bento-panel">
+                <div class="section-header" style="margin-bottom: 1.25rem;">
+                    <span class="section-eyebrow">// Education</span>
+                    <h2 class="section-title" style="font-size: 1.35rem;">Formação Acadêmica</h2>
+                </div>
+                <div class="edu-list">
+                    <div class="edu-item">
+                        <div class="edu-degree">MBA em Data Science e Analytics</div>
+                        <div class="edu-inst">USP / Esalq • 2021 – 2023</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+                        <div class="edu-inst">Anhanguera • 2020 – 2022</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">MBA em Administração de Empresas</div>
+                        <div class="edu-inst">UNICV • 2018</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Tecnologia em Logística</div>
+                        <div class="edu-inst">Anhanguera • 2010 – 2012</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20no%20LinkedIn%20e%20gostaria%20de%20conversar!" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="footer-contact">WhatsApp: +55 12 99756-5773 • linkedin.com/in/lalmeidadeveloper</div>
+        <p>© 2026 Luis Eduardo de Almeida. Portfólio Profissional.</p>
+    </footer>
+</body>
+</html>
