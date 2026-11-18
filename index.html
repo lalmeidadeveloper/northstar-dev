@@ -135,7 +135,7 @@
             gap: 3rem;
             position: relative;
             overflow: hidden;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
         }
 
@@ -254,6 +254,31 @@
             transform: translateY(-2px);
         }
 
+        /* Frase de Impacto Pós-Apresentação */
+        .impact-banner {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2.25rem 2.5rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+        }
+
+        .impact-banner h2 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        .impact-banner h2 span {
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         /* Métricas */
         .bento-metrics {
             display: grid;
@@ -300,6 +325,56 @@
             margin-bottom: 0.35rem;
         }
         .section-title { font-size: 1.65rem; font-weight: 700; }
+
+        /* Contribuição Grid (Como Posso Contribuir) */
+        .contrib-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .contrib-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .contrib-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+        }
+
+        .contrib-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1.15rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contrib-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .contrib-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
 
         /* Timeline */
         .timeline {
@@ -541,11 +616,12 @@
             font-size: 0.8rem;
         }
 
-        /* Stack & Educação */
+        /* Stack & Educação (Bottom Bento) */
         .bottom-bento {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 1.5rem;
+            margin-bottom: 4rem;
         }
 
         .bento-panel {
@@ -554,6 +630,12 @@
             border: 1px solid var(--border-glass);
             border-radius: 20px;
             padding: 2rem;
+        }
+
+        .bento-panel h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
         }
 
         .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
@@ -572,6 +654,40 @@
         .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
         .edu-degree { font-weight: 600; font-size: 0.95rem; }
         .edu-inst { font-size: 0.82rem; color: var(--text-secondary); font-family: 'JetBrains Mono', monospace; }
+
+        /* Call to Action Final */
+        .final-cta-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+
+        .final-cta-card h2 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+
+        .final-cta-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
         /* WhatsApp Flutuante */
         .whatsapp-float {
@@ -608,8 +724,8 @@
         }
 
         @media (max-width: 900px) {
-            .bento-metrics, .courses-grid, .mentorship-features { grid-template-columns: 1fr; }
-            .posts-grid, .bottom-bento { grid-template-columns: 1fr; }
+            .bento-metrics, .contrib-grid, .courses-grid, .mentorship-features, .bottom-bento { grid-template-columns: 1fr; }
+            .posts-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 720px) {
             .hero-card { flex-direction: column; text-align: center; padding: 2.25rem 1.5rem; }
@@ -628,14 +744,16 @@
             luis.almeida<span style="color: var(--accent-cyan);">.data</span>
         </a>
         <div class="nav-links">
+            <a href="#contribuir">Atuação</a>
+            <a href="#cursos">Cursos & Aulas</a>
             <a href="#trajetoria">Trajetória</a>
             <a href="#publicacoes">Publicações</a>
-            <a href="#cursos">Cursos & Aulas</a>
             <a href="#stack">Stack</a>
         </div>
     </nav>
 
     <div class="container">
+        <!-- 1. Apresentação (Hero) -->
         <section class="hero-card">
             <div class="avatar-wrapper">
                 <div class="avatar-ring"></div>
@@ -662,6 +780,12 @@
             </div>
         </section>
 
+        <!-- Frase de Impacto Pós-Apresentação -->
+        <div class="impact-banner">
+            <h2>Transformo processos e dados <span>em resultados de negócio.</span></h2>
+        </div>
+
+        <!-- 4 Tópicos de Resultados (Métricas) -->
         <section class="bento-metrics">
             <div class="metric-box">
                 <span class="metric-value"><span>+</span>10 anos</span>
@@ -681,46 +805,51 @@
             </div>
         </section>
 
-        <!-- Trajetória -->
-        <div class="section-header" id="trajetoria">
-            <span class="section-eyebrow">// Evolução Profissional</span>
-            <h2 class="section-title">Crescimento & Experiência</h2>
+        <!-- Como Posso Contribuir -->
+        <div class="section-header" id="contribuir">
+            <span class="section-eyebrow">// Como Posso Contribuir</span>
+            <h2 class="section-title">Da necessidade do negócio à solução implementada</h2>
         </div>
 
-        <div class="timeline">
-            <div class="timeline-card">
-                <div class="timeline-meta">
-                    <span class="timeline-period">DEZ 2023 – NOV 2026</span>
-                    <span class="timeline-company">Bimbo do Brasil</span>
-                </div>
-                <h3 class="timeline-role">Especialista em Dados</h3>
-                <p class="timeline-desc">Modelagem analítica em Oracle Fusion Data Intelligence (FDI), incluindo projeto internacional de Hypercare na Espanha. Idealizador e instrutor de Bootcamps internos de Finanças & DNA, capacitando times em Power BI, Power Automate e Copilot Studio.</p>
+        <div class="contrib-grid">
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Business Intelligence & Analytics</h3>
+                <p>Construção de indicadores, dashboards e análises para transformar dados em informação clara e apoiar decisões de negócio.</p>
             </div>
-            <div class="timeline-card">
-                <div class="timeline-meta">
-                    <span class="timeline-period">JAN 2023 – DEZ 2023</span>
-                    <span class="timeline-company">Bimbo do Brasil</span>
-                </div>
-                <h3 class="timeline-role">Analista de Dados Sênior</h3>
-                <p class="timeline-desc">Arquitetura de soluções de Business Intelligence, estruturação de pipelines de ETL e desenvolvimento de aplicativos corporativos com Power Apps e Dataverse para automação financeira e operacional.</p>
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Automação de Processos</h3>
+                <p>Mapeamento de gargalos, padronização de fluxos e automação de atividades repetitivas com Power Automate.</p>
             </div>
-            <div class="timeline-card">
-                <div class="timeline-meta">
-                    <span class="timeline-period">DEZ 2014 – DEZ 2022</span>
-                    <span class="timeline-company">Bimbo do Brasil</span>
-                </div>
-                <h3 class="timeline-role">Evolução em Dados, Sistemas & Processos</h3>
-                <p class="timeline-desc">Crescimento progressivo desde áreas administrativas e operacionais até a consolidação em Data Analytics, conduzindo a digitalização de fluxos e substituição de controles manuais por plataformas integradas.</p>
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-mobile-screen"></i></div>
+                <h3>Aplicações Corporativas</h3>
+                <p>Desenvolvimento de aplicativos com Power Apps, Dataverse e SharePoint para digitalizar processos e organizar informações.</p>
+            </div>
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-database"></i></div>
+                <h3>Plataformas de Dados</h3>
+                <p>Modelagem analítica e construção de indicadores corporativos com experiência em Oracle Fusion Data Intelligence (FDI).</p>
+            </div>
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-robot"></i></div>
+                <h3>Inteligência Artificial</h3>
+                <p>Criação e customização de agentes inteligentes e assistentes virtuais com Copilot Studio, conectados a dados e processos.</p>
+            </div>
+            <div class="contrib-card">
+                <div class="contrib-icon"><i class="fas fa-users-viewfinder"></i></div>
+                <h3>Capacitação & Mentoria</h3>
+                <p>Treinamentos práticos e orientação técnica para equipes e profissionais que desejam aplicar tecnologia no dia a dia.</p>
             </div>
         </div>
 
-        <!-- Seção: Cursos & Aulas Particulares -->
+        <!-- Capacitação & Mentoria (Cursos & Aulas) -->
         <div class="section-header" id="cursos">
             <span class="section-eyebrow">// Capacitação & Mentoria</span>
             <h2 class="section-title">Cursos & Aulas Particulares Hands-on</h2>
         </div>
 
-        <!-- Cards de Cursos Específicos -->
         <div class="courses-grid">
             <div class="course-card">
                 <div>
@@ -771,7 +900,6 @@
             </div>
         </div>
 
-        <!-- Mentoria Hands-On / Consultoria PME -->
         <div class="mentorship-card">
             <h3><i class="fas fa-laptop-code"></i> Aulas Particulares & Consultoria Sob Medida</h3>
             <p>
@@ -796,7 +924,40 @@
             </a>
         </div>
 
-        <!-- Publicações em Destaque -->
+        <!-- Evolução Profissional (Trajetória) -->
+        <div class="section-header" id="trajetoria">
+            <span class="section-eyebrow">// Evolução Profissional</span>
+            <h2 class="section-title">Crescimento & Experiência</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">DEZ 2023 – NOV 2026</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Especialista em Dados</h3>
+                <p class="timeline-desc">Modelagem analítica em Oracle Fusion Data Intelligence (FDI), incluindo projeto internacional de Hypercare na Espanha. Idealizador e instrutor de Bootcamps internos de Finanças & DNA, capacitando times em Power BI, Power Automate e Copilot Studio.</p>
+            </div>
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">JAN 2023 – DEZ 2023</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Analista de Dados Sênior</h3>
+                <p class="timeline-desc">Arquitetura de soluções de Business Intelligence, estruturação de pipelines de ETL e desenvolvimento de aplicativos corporativos com Power Apps e Dataverse para automação financeira e operacional.</p>
+            </div>
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">DEZ 2014 – DEZ 2022</span>
+                    <span class="timeline-company">Bimbo do Brasil</span>
+                </div>
+                <h3 class="timeline-role">Evolução em Dados, Sistemas & Processos</h3>
+                <p class="timeline-desc">Crescimento progressivo desde áreas administrativas e operacionais até a consolidação em Data Analytics, conduzindo a digitalização de fluxos e substituição de controles manuais por plataformas integradas.</p>
+            </div>
+        </div>
+
+        <!-- Featured Content (Publicações em Destaque no LinkedIn) -->
         <div class="section-header" id="publicacoes">
             <span class="section-eyebrow">// Featured Content</span>
             <h2 class="section-title">Publicações em Destaque no LinkedIn</h2>
@@ -831,4 +992,85 @@
                     <h3>Gratidão e Reconhecimento à Equipe</h3>
                     <p>Celebrando conquistas coletivas, o protagonismo das pessoas e o impacto de equipes engajadas em projetos de inovação e BI.</p>
                 </div>
-                <a href="
+                <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="post-cta">
+                    Ler no LinkedIn <i class="fas fa-arrow-right"></i>
+                </a>
+            </article>
+        </div>
+
+        <!-- Ferramentas & Conhecimentos (Stack & Competências) -->
+        <div class="section-header" id="stack">
+            <span class="section-eyebrow">// Ferramentas & Conhecimentos</span>
+            <h2 class="section-title">Stack & Competências</h2>
+        </div>
+
+        <div class="bottom-bento">
+            <div class="bento-panel">
+                <h3>Tecnologias & Skills</h3>
+                <div class="skills-wrap">
+                    <span class="tech-pill">Power BI</span>
+                    <span class="tech-pill">DAX</span>
+                    <span class="tech-pill">Power Query</span>
+                    <span class="tech-pill">SQL</span>
+                    <span class="tech-pill">Power Automate</span>
+                    <span class="tech-pill">Power Apps</span>
+                    <span class="tech-pill">Dataverse</span>
+                    <span class="tech-pill">SharePoint</span>
+                    <span class="tech-pill">Copilot Studio</span>
+                    <span class="tech-pill">Oracle FDI</span>
+                    <span class="tech-pill">ETL</span>
+                    <span class="tech-pill">Data Analytics</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Excel</span>
+                </div>
+            </div>
+
+            <div class="bento-panel">
+                <h3>Formação Acadêmica</h3>
+                <div class="edu-list">
+                    <div class="edu-item">
+                        <div class="edu-degree">MBA em Data Science & Analytics</div>
+                        <div class="edu-inst">USP / Esalq • 2023</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+                        <div class="edu-inst">Anhanguera • 2022</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">MBA em Administração de Empresas</div>
+                        <div class="edu-inst">UNICV • 2018</div>
+                    </div>
+                    <div class="edu-item">
+                        <div class="edu-degree">Tecnólogo em Logística</div>
+                        <div class="edu-inst">Anhanguera • 2012</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Final -->
+        <section class="final-cta-card">
+            <h2>O próximo desafio pode começar aqui.</h2>
+            <p>Aberto a conversas sobre oportunidades em Dados, BI, Automação e Transformação Digital, além de projetos de consultoria e capacitação.</p>
+            <div class="final-cta-actions">
+                <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="btn btn-linkedin">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vim%20pelo%20portf%C3%B3lio!" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="footer-contact">+55 12 99756-5773 • lalmeida.developer@gmail.com</div>
+        <p>Luis Eduardo de Almeida • Dados, Automação & Transformação Digital</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
