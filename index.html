@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Ícones -->
+    <!-- Ícones FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -23,6 +23,7 @@
             --accent-cyan: #38bdf8;
             --accent-blue: #3b82f6;
             --accent-indigo: #818cf8;
+            --accent-whatsapp: #25d366;
         }
 
         * {
@@ -102,7 +103,8 @@
 
         .nav-links {
             display: flex;
-            gap: 1.75rem;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -413,6 +415,132 @@
             text-decoration: none;
         }
 
+        /* Nova Seção: Cursos & Mentorias */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .course-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .course-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            font-size: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 1rem;
+        }
+
+        .course-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        /* Card de Mentoria Hands-On / Consultoria PME */
+        .mentorship-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 4.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mentorship-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .mentorship-card h3 i {
+            color: var(--accent-cyan);
+        }
+
+        .mentorship-card p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .mentorship-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .m-feature {
+            background: rgba(7, 11, 20, 0.5);
+            border: 1px solid var(--border-glass);
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .m-feature strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+        }
+
         /* Stack & Educação */
         .bottom-bento {
             display: grid;
@@ -480,7 +608,7 @@
         }
 
         @media (max-width: 900px) {
-            .bento-metrics { grid-template-columns: repeat(2, 1fr); }
+            .bento-metrics, .courses-grid, .mentorship-features { grid-template-columns: 1fr; }
             .posts-grid, .bottom-bento { grid-template-columns: 1fr; }
         }
         @media (max-width: 720px) {
@@ -502,7 +630,8 @@
         <div class="nav-links">
             <a href="#trajetoria">Trajetória</a>
             <a href="#publicacoes">Publicações</a>
-            <a href="#stack">Stack & Formação</a>
+            <a href="#cursos">Cursos & Aulas</a>
+            <a href="#stack">Stack</a>
         </div>
     </nav>
 
@@ -520,13 +649,13 @@
                 <h1>Luis Eduardo de Almeida</h1>
                 <div class="hero-subtitle">Especialista em Dados, Business Intelligence & Transformação Digital</div>
                 <p class="hero-bio">
-                    Mais de uma década conectando estratégia de negócios à engenharia e visualização de dados. Foco em mapear gargalos operacionais, padronizar fluxos e escalar soluções com Power Platform, Oracle FDI e Inteligência Artificial.
+                    Mais de uma década conectando estratégia de negócios à engenharia e visualização de dados. Foco em mapear gargalos operacionais, padronizar fluxos e escalar soluções com Power Platform, Oracle FDI e Inteligência Artificial. Atendimento especializado em consultoria para pequenas e médias empresas.
                 </p>
                 <div class="hero-actions">
                     <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="btn btn-linkedin">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
-                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20no%20LinkedIn%20e%20gostaria%20de%20conversar!" target="_blank" class="btn btn-whatsapp">
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20saber%20mais%20sobre%20aulas%20ou%20consultoria!" target="_blank" class="btn btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> +55 12 99756-5773
                     </a>
                 </div>
@@ -552,6 +681,7 @@
             </div>
         </section>
 
+        <!-- Trajetória -->
         <div class="section-header" id="trajetoria">
             <span class="section-eyebrow">// Evolução Profissional</span>
             <h2 class="section-title">Crescimento & Experiência</h2>
@@ -584,6 +714,89 @@
             </div>
         </div>
 
+        <!-- Seção: Cursos & Aulas Particulares -->
+        <div class="section-header" id="cursos">
+            <span class="section-eyebrow">// Capacitação & Mentoria</span>
+            <h2 class="section-title">Cursos & Aulas Particulares Hands-on</h2>
+        </div>
+
+        <!-- Cards de Cursos Específicos -->
+        <div class="courses-grid">
+            <div class="course-card">
+                <div>
+                    <div class="course-icon"><i class="fas fa-chart-pie"></i></div>
+                    <h3>Power BI + AI Aplicada</h3>
+                    <p>Construção de indicadores avançados combinando o poder do Business Intelligence com recursos de inteligência artificial para tomada de decisão.</p>
+                </div>
+                <div class="course-footer">
+                    <span class="course-badge">Módulo Prático</span>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20de%20Power%20BI%20%2B%20AI!" target="_blank" class="post-cta">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div>
+                    <div class="course-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                    <h3>Power Automate Cloud</h3>
+                    <p>Automatize fluxos de trabalho, integração de sistemas e processos repetitivos diretamente na nuvem para ganhar produtividade máxima.</p>
+                </div>
+                <div class="course-footer">
+                    <span class="course-badge">Automação</span>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20de%20Power%20Automate%20Cloud!" target="_blank" class="post-cta">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div>
+                    <div class="course-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                    <h3>Power Apps</h3>
+                    <p>Desenvolvimento de aplicativos corporativos personalizados e conectados ao Dataverse sem complexidade excessiva, resolvendo dores operacionais.</p>
+                </div>
+                <div class="course-footer">
+                    <span class="course-badge">Low-Code Apps</span>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20de%20Power%20Apps!" target="_blank" class="post-cta">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div>
+                    <div class="course-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Copilot Studio</h3>
+                    <p>Criação e customização de agentes inteligentes e assistentes virtuais integrados aos dados da sua empresa ou negócio.</p>
+                </div>
+                <div class="course-footer">
+                    <span class="course-badge">IA & Chatbots</span>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20curso%20de%20Copilot%20Studio!" target="_blank" class="post-cta">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mentoria Hands-On / Consultoria PME -->
+        <div class="mentorship-card">
+            <h3><i class="fas fa-laptop-code"></i> Aulas Particulares & Consultoria Sob Medida</h3>
+            <p>
+                Metodologia <strong>100% Hands-on</strong>: você escolhe o tema específico ou o desafio técnico/operacional que está enfrentando, e juntos construímos a solução na prática. Ideal para profissionais buscando aceleração na carreira ou empresas que precisam resolver gargalos reais.
+            </p>
+            <div class="mentorship-features">
+                <div class="m-feature">
+                    <strong>Foco no seu Problema</strong>
+                    Traga o seu cenário real de dados ou automação para a aula.
+                </div>
+                <div class="m-feature">
+                    <strong>Projetos Pré-Definidos</strong>
+                    Valores ajustados sob medida conforme a complexidade do escopo.
+                </div>
+                <div class="m-feature">
+                    <strong>Consultoria para PMEs</strong>
+                    Estruturação de BI, painéis e automações para pequenas e médias empresas.
+                </div>
+            </div>
+            <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20quero%20agendar%20uma%20aula%20particular%20hands-on%20ou%20conversar%20sobre%20consultoria%20para%20minha%20empresa!" target="_blank" class="btn btn-whatsapp" style="display: inline-flex;">
+                <i class="fab fa-whatsapp"></i> Solicitar Orçamento via WhatsApp
+            </a>
+        </div>
+
+        <!-- Publicações em Destaque -->
         <div class="section-header" id="publicacoes">
             <span class="section-eyebrow">// Featured Content</span>
             <h2 class="section-title">Publicações em Destaque no LinkedIn</h2>
@@ -618,67 +831,4 @@
                     <h3>Gratidão e Reconhecimento à Equipe</h3>
                     <p>Celebrando conquistas coletivas, o protagonismo das pessoas e o impacto de equipes engajadas em projetos de inovação e BI.</p>
                 </div>
-                <a href="https://www.linkedin.com/posts/lalmeidadeveloper_gratidaeto-reconhecimento-equipe-activity-7256689383595003904-IGdH" target="_blank" class="post-cta">
-                    Ler no LinkedIn <i class="fas fa-arrow-right"></i>
-                </a>
-            </article>
-        </div>
-
-        <div class="bottom-bento" id="stack">
-            <div class="bento-panel">
-                <div class="section-header" style="margin-bottom: 1.25rem;">
-                    <span class="section-eyebrow">// Tech Stack</span>
-                    <h2 class="section-title" style="font-size: 1.35rem;">Competências & Ferramentas</h2>
-                </div>
-                <div class="skills-wrap">
-                    <span class="tech-pill">Power BI</span>
-                    <span class="tech-pill">Power Apps</span>
-                    <span class="tech-pill">Power Automate</span>
-                    <span class="tech-pill">Copilot Studio</span>
-                    <span class="tech-pill">Dataverse</span>
-                    <span class="tech-pill">Oracle FDI</span>
-                    <span class="tech-pill">SQL</span>
-                    <span class="tech-pill">Python</span>
-                    <span class="tech-pill">ETL & Data Modeling</span>
-                    <span class="tech-pill">AI Agents</span>
-                    <span class="tech-pill">Gestão de Projetos</span>
-                </div>
-            </div>
-
-            <div class="bento-panel">
-                <div class="section-header" style="margin-bottom: 1.25rem;">
-                    <span class="section-eyebrow">// Education</span>
-                    <h2 class="section-title" style="font-size: 1.35rem;">Formação Acadêmica</h2>
-                </div>
-                <div class="edu-list">
-                    <div class="edu-item">
-                        <div class="edu-degree">MBA em Data Science e Analytics</div>
-                        <div class="edu-inst">USP / Esalq • 2021 – 2023</div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
-                        <div class="edu-inst">Anhanguera • 2020 – 2022</div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-degree">MBA em Administração de Empresas</div>
-                        <div class="edu-inst">UNICV • 2018</div>
-                    </div>
-                    <div class="edu-item">
-                        <div class="edu-degree">Tecnologia em Logística</div>
-                        <div class="edu-inst">Anhanguera • 2010 – 2012</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20no%20LinkedIn%20e%20gostaria%20de%20conversar!" target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <footer>
-        <div class="footer-contact">WhatsApp: +55 12 99756-5773 • linkedin.com/in/lalmeidadeveloper</div>
-        <p>© 2026 Luis Eduardo de Almeida. Portfólio Profissional.</p>
-    </footer>
-</body>
-</html>
+                <a href="
