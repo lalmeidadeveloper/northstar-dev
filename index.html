@@ -23,6 +23,7 @@
             --accent-cyan: #38bdf8;
             --accent-blue: #3b82f6;
             --accent-indigo: #818cf8;
+            --accent-emerald: #10b981;
             --accent-whatsapp: #25d366;
         }
 
@@ -243,6 +244,11 @@
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
         }
 
+        .btn-linkedin:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
+        }
+
         .btn-whatsapp {
             background: rgba(37, 211, 102, 0.12);
             border: 1px solid rgba(37, 211, 102, 0.35);
@@ -251,6 +257,17 @@
 
         .btn-whatsapp:hover {
             background: rgba(37, 211, 102, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .btn-papo50 {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--accent-cyan);
+        }
+
+        .btn-papo50:hover {
+            background: rgba(56, 189, 248, 0.22);
             transform: translateY(-2px);
         }
 
@@ -374,120 +391,6 @@
         .contrib-card p {
             font-size: 0.9rem;
             color: var(--text-secondary);
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 4.5rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-indigo), rgba(148, 163, 184, 0.1));
-        }
-
-        .timeline-card {
-            position: relative;
-            background: var(--bg-surface);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 18px;
-            padding: 1.75rem;
-            margin-bottom: 1.25rem;
-            transition: border-color 0.3s;
-        }
-
-        .timeline-card:hover { border-color: var(--border-glow); }
-
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            left: -2.02rem;
-            top: 2rem;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--bg-dark);
-            border: 2.5px solid var(--accent-cyan);
-            box-shadow: 0 0 10px var(--accent-cyan);
-        }
-
-        .timeline-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .timeline-period {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent-cyan);
-            background: rgba(56, 189, 248, 0.08);
-            padding: 0.2rem 0.65rem;
-            border-radius: 6px;
-        }
-
-        .timeline-company { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
-        .timeline-role { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.65rem; }
-        .timeline-desc { font-size: 0.94rem; color: var(--text-secondary); }
-
-        /* Posts */
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-bottom: 4.5rem;
-        }
-
-        .post-card {
-            background: var(--bg-surface);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--border-glass);
-            border-radius: 20px;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .post-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--border-glow);
-        }
-
-        .post-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.72rem;
-            color: var(--accent-indigo);
-            background: rgba(129, 140, 248, 0.12);
-            border: 1px solid rgba(129, 140, 248, 0.25);
-            padding: 0.25rem 0.65rem;
-            border-radius: 6px;
-            width: fit-content;
-            margin-bottom: 1rem;
-        }
-
-        .post-card h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 0.65rem; }
-        .post-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
-        .post-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--accent-cyan);
-            text-decoration: none;
         }
 
         /* Nova Seção: Cursos & Mentorias */
@@ -616,6 +519,338 @@
             font-size: 0.8rem;
         }
 
+        /* Seção Papo 50+ Digital */
+        .papo50-card {
+            background: linear-gradient(145deg, rgba(10, 25, 58, 0.78), rgba(15, 23, 42, 0.85));
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            border-radius: 24px;
+            padding: 2.75rem;
+            margin-bottom: 4.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.55);
+        }
+
+        .papo50-card::after {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.14), rgba(56, 189, 248, 0.05) 60%, transparent 75%);
+            pointer-events: none;
+        }
+
+        .papo50-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papo50-logo-wrap {
+            position: relative;
+            flex-shrink: 0;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.22);
+        }
+
+        .papo50-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            background: #042560;
+        }
+
+        .papo50-founder-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .papo50-title-block h3 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.35rem;
+            color: #fff;
+        }
+
+        .papo50-tagline {
+            font-size: 1.08rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, var(--accent-cyan), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .papo50-story {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papo50-story strong {
+            color: var(--text-primary);
+        }
+
+        .papo50-mv-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 1.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papo50-mv-box {
+            background: rgba(7, 11, 20, 0.55);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: border-color 0.25s ease;
+        }
+
+        .papo50-mv-box:hover {
+            border-color: var(--border-glow);
+        }
+
+        .papo50-mv-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.55rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .papo50-mv-box h4 i {
+            color: var(--accent-cyan);
+        }
+
+        .papo50-mv-box p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+
+        .papo50-values-box {
+            background: rgba(7, 11, 20, 0.45);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papo50-values-box h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .papo50-values-box h4 i {
+            color: #34d399;
+        }
+
+        .papo50-values-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            list-style: none;
+        }
+
+        .papo50-value-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            padding: 0.5rem 0.95rem;
+            border-radius: 10px;
+        }
+
+        .papo50-value-pill i {
+            color: #34d399;
+            font-size: 0.82rem;
+        }
+
+        .papo50-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 1.75rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .papo50-quote {
+            max-width: 560px;
+            font-size: 0.94rem;
+            color: var(--text-secondary);
+        }
+
+        .papo50-quote strong {
+            display: block;
+            margin-top: 0.4rem;
+            color: var(--text-primary);
+            font-size: 0.98rem;
+        }
+
+        .papo50-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-indigo), rgba(148, 163, 184, 0.1));
+        }
+
+        .timeline-card {
+            position: relative;
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 18px;
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            transition: border-color 0.3s;
+        }
+
+        .timeline-card:hover { border-color: var(--border-glow); }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -2.02rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            border: 2.5px solid var(--accent-cyan);
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .timeline-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .timeline-period {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            background: rgba(56, 189, 248, 0.08);
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+        }
+
+        .timeline-company { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); }
+        .timeline-role { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.65rem; }
+        .timeline-desc { font-size: 0.94rem; color: var(--text-secondary); }
+
+        /* Posts */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 4.5rem;
+        }
+
+        .post-card {
+            background: var(--bg-surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+        }
+
+        .post-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent-indigo);
+            background: rgba(129, 140, 248, 0.12);
+            border: 1px solid rgba(129, 140, 248, 0.25);
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .post-card h3 { font-size: 1.12rem; font-weight: 700; margin-bottom: 0.65rem; }
+        .post-card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .post-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
         /* Stack & Educação (Bottom Bento) */
         .bottom-bento {
             display: grid;
@@ -724,11 +959,15 @@
         }
 
         @media (max-width: 900px) {
-            .bento-metrics, .contrib-grid, .courses-grid, .mentorship-features, .bottom-bento { grid-template-columns: 1fr; }
+            .bento-metrics, .contrib-grid, .courses-grid, .mentorship-features, .bottom-bento, .papo50-mv-grid { grid-template-columns: 1fr; }
             .posts-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 720px) {
             .hero-card { flex-direction: column; text-align: center; padding: 2.25rem 1.5rem; }
+            .papo50-card { padding: 2rem 1.5rem; }
+            .papo50-header { flex-direction: column; text-align: center; gap: 1.25rem; }
+            .papo50-actions { width: 100%; }
+            .papo50-actions .btn { width: 100%; justify-content: center; }
             .nav-links { display: none; }
         }
     </style>
@@ -746,6 +985,7 @@
         <div class="nav-links">
             <a href="#contribuir">Atuação</a>
             <a href="#cursos">Cursos & Aulas</a>
+            <a href="#papo50">Papo 50+ Digital</a>
             <a href="#trajetoria">Trajetória</a>
             <a href="#publicacoes">Publicações</a>
             <a href="#stack">Stack</a>
@@ -762,16 +1002,19 @@
             <div class="hero-content">
                 <div class="status-badge">
                     <span class="status-pulse"></span>
-                    Data Analytics • Power Platform • AI Solutions
+                    Data Analytics • Power Platform • AI Solutions • Papo 50+ Digital
                 </div>
                 <h1>Luis Eduardo de Almeida</h1>
-                <div class="hero-subtitle">Especialista em Dados, Business Intelligence & Transformação Digital</div>
+                <div class="hero-subtitle">Especialista em Dados, BI & Transformação Digital | Fundador do Papo 50+ Digital</div>
                 <p class="hero-bio">
-                    Mais de uma década conectando estratégia de negócios à engenharia e visualização de dados. Foco em mapear gargalos operacionais, padronizar fluxos e escalar soluções com Power Platform, Oracle FDI e Inteligência Artificial. Atendimento especializado em consultoria para pequenas e médias empresas.
+                    Mais de uma década conectando estratégia de negócios à engenharia e visualização de dados. Foco em mapear gargalos operacionais, padronizar fluxos e escalar soluções com Power Platform, Oracle FDI e Inteligência Artificial — além de liderar o <strong>Papo 50+ Digital</strong>, iniciativa de educação tecnológica e IA para o público 50+.
                 </p>
                 <div class="hero-actions">
                     <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="btn btn-linkedin">
                         <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="#papo50" class="btn btn-papo50">
+                        <i class="fas fa-lightbulb"></i> Papo 50+ Digital
                     </a>
                     <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20saber%20mais%20sobre%20aulas%20ou%20consultoria!" target="_blank" class="btn btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> +55 12 99756-5773
@@ -924,6 +1167,73 @@
             </a>
         </div>
 
+        <!-- Iniciativa & Propósito: Papo 50+ Digital -->
+        <div class="section-header" id="papo50">
+            <span class="section-eyebrow">// Iniciativa &amp; Propósito</span>
+            <h2 class="section-title">Papo 50+ Digital</h2>
+        </div>
+
+        <section class="papo50-card">
+            <div class="papo50-header">
+                <div class="papo50-logo-wrap">
+                    <img src="papo-50-digital.jpg" alt="Logo Papo 50+ Digital - Tecnologia sem idade, mais possibilidades" class="papo50-logo" onerror="this.src='https://ui-avatars.com/api/?name=Papo+50%2B&background=042560&color=38bdf8&size=240&bold=true'">
+                </div>
+                <div class="papo50-title-block">
+                    <div class="papo50-founder-badge">
+                        <i class="fas fa-award"></i> Fundador • Educação Digital &amp; IA
+                    </div>
+                    <h3>Papo 50+ Digital</h3>
+                    <div class="papo50-tagline">Tecnologia e IA para a vida real. 💡</div>
+                </div>
+            </div>
+
+            <div class="papo50-story">
+                <p>
+                    O mundo está mudando. A tecnologia e a inteligência artificial estão cada vez mais presentes em nossas vidas, no trabalho e nas atividades do dia a dia. Mas acompanhar essas transformações não deveria ser um privilégio de poucos.
+                </p>
+                <p>
+                    Foi com essa visão que nasceu o <strong>Papo 50+ Digital</strong>: uma iniciativa de educação digital criada para ajudar pessoas com 50 anos ou mais a aprender, acompanhar as mudanças e utilizar a tecnologia com autonomia, confiança e segurança.
+                </p>
+            </div>
+
+            <div class="papo50-mv-grid">
+                <div class="papo50-mv-box">
+                    <h4><i class="fas fa-bullseye"></i> Nossa Missão</h4>
+                    <p>Democratizar o acesso à tecnologia e à inteligência artificial, promovendo autonomia, segurança e inclusão digital para pessoas com 50 anos ou mais.</p>
+                </div>
+                <div class="papo50-mv-box">
+                    <h4><i class="fas fa-rocket"></i> Nossa Visão</h4>
+                    <p>Ser uma referência brasileira em educação tecnológica acessível para o público 50+.</p>
+                </div>
+            </div>
+
+            <div class="papo50-values-box">
+                <h4><i class="fas fa-handshake"></i> Nossos Valores</h4>
+                <ul class="papo50-values-list">
+                    <li class="papo50-value-pill"><i class="fas fa-check-circle"></i> Respeito à experiência de vida</li>
+                    <li class="papo50-value-pill"><i class="fas fa-check-circle"></i> Linguagem simples e acessível</li>
+                    <li class="papo50-value-pill"><i class="fas fa-check-circle"></i> Aprendizado sem julgamentos</li>
+                    <li class="papo50-value-pill"><i class="fas fa-check-circle"></i> Segurança e privacidade</li>
+                    <li class="papo50-value-pill"><i class="fas fa-check-circle"></i> Tecnologia a serviço das pessoas</li>
+                </ul>
+            </div>
+
+            <div class="papo50-footer">
+                <div class="papo50-quote">
+                    Acreditamos que experiência e inovação devem caminhar juntas. Não importa a idade ou o nível de conhecimento: sempre existe espaço para aprender algo novo, descobrir possibilidades e evoluir. Queremos construir esse caminho junto com você.
+                    <strong>Aprender, conversar e evoluir não tem idade!</strong>
+                </div>
+                <div class="papo50-actions">
+                    <a href="https://www.linkedin.com/company/papo-50-digital/" target="_blank" class="btn btn-linkedin">
+                        <i class="fab fa-linkedin"></i> Página no LinkedIn
+                    </a>
+                    <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20conheci%20o%20Papo%2050%2B%20Digital%20e%20gostaria%20de%20conversar!" target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Falar sobre o Projeto
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- Evolução Profissional (Trajetória) -->
         <div class="section-header" id="trajetoria">
             <span class="section-eyebrow">// Evolução Profissional</span>
@@ -931,6 +1241,14 @@
         </div>
 
         <div class="timeline">
+            <div class="timeline-card">
+                <div class="timeline-meta">
+                    <span class="timeline-period">ATUAL • INICIATIVA PRÓPRIA</span>
+                    <span class="timeline-company">Papo 50+ Digital</span>
+                </div>
+                <h3 class="timeline-role">Fundador & Educador em Tecnologia e IA</h3>
+                <p class="timeline-desc">Idealizador da iniciativa de educação digital dedicada ao público 50+, democratizando o uso prático da tecnologia e da inteligência artificial com linguagem simples, foco em segurança, privacidade e autonomia para a vida real.</p>
+            </div>
             <div class="timeline-card">
                 <div class="timeline-meta">
                     <span class="timeline-period">DEZ 2023 – NOV 2026</span>
@@ -1051,13 +1369,16 @@
         <!-- Call to Action Final -->
         <section class="final-cta-card">
             <h2>O próximo desafio pode começar aqui.</h2>
-            <p>Aberto a conversas sobre oportunidades em Dados, BI, Automação e Transformação Digital, além de projetos de consultoria e capacitação.</p>
+            <p>Aberto a conversas sobre oportunidades em Dados, BI, Automação e Transformação Digital, além de projetos de consultoria, capacitação e parcerias no Papo 50+ Digital.</p>
             <div class="final-cta-actions">
                 <a href="https://wa.me/5512997565773?text=Ol%C3%A1%20Luis%2C%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!" target="_blank" class="btn btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
                 <a href="https://www.linkedin.com/in/lalmeidadeveloper" target="_blank" class="btn btn-linkedin">
-                    <i class="fab fa-linkedin"></i> LinkedIn
+                    <i class="fab fa-linkedin"></i> LinkedIn Pessoal
+                </a>
+                <a href="https://www.linkedin.com/company/papo-50-digital/" target="_blank" class="btn btn-papo50">
+                    <i class="fab fa-linkedin"></i> Papo 50+ Digital
                 </a>
             </div>
         </section>
@@ -1069,7 +1390,7 @@
 
     <footer>
         <div class="footer-contact">+55 12 99756-5773 • lalmeida.developer@gmail.com</div>
-        <p>Luis Eduardo de Almeida • Dados, Automação & Transformação Digital</p>
+        <p>Luis Eduardo de Almeida • Dados, Automação, Transformação Digital &amp; Fundador do Papo 50+ Digital</p>
         <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Todos os direitos reservados.</p>
     </footer>
 </body>
